@@ -110,3 +110,34 @@ function addTask() {
   displayTasks();
 }
 
+
+function editTask(index) {
+  // Retrieve the data of the tasks from local storage
+  const tasksJSON = localStorage.getItem("tasks");
+
+  // Parse tasks from JSON 
+  // OR initialize an empty array if in case it doesn't exist
+  const tasks = JSON.parse(tasksJSON) || [];
+
+  // Retrieve the task on the given index
+  const editedTask = tasks[index];
+
+  // Retrieve the HTML input elements with the id  and set its value
+  document.getElementById("task-name").value = editedTask.name;
+  document.getElementById("task-description").value = editedTask.description;
+  document.getElementById("assigned-person-of-task").value = editedTask.person;
+  document.getElementById("due-date-of-the-task").value = editedTask.date;
+  document.getElementById("priority").value = editedTask.priority;
+
+  // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+  tasks.splice(index, 1);
+
+  // Convert the updated tasks into the JSON string
+  // Reference: https://www.w3schools.com/js/js_json_stringify.asp
+  const updatedTasksJSON = JSON.stringify(tasks);
+
+  // Update tasks in local storage
+  localStorage.setItem("tasks", updatedTasksJSON);
+
+  displayTasks();
+}
