@@ -69,3 +69,44 @@ function displayTasks() {
 
   task_of_user.appendChild(taskOP);
 }
+
+
+
+function addTask() {
+  // Retrieve the task details from the input fields for the task manager
+  const name_of_task = document.getElementById("task-name").value;
+  const description_of_task = document.getElementById("task-description").value;
+  const assigned_person = document.getElementById("assigned-person-of-task").value;
+  const due_date = document.getElementById("due-date-of-the-task").value;
+  const priority_of_task = document.getElementById("priority").value;
+
+  // Create object with the retrieved details as per the field
+  const task = {
+    name: name_of_task,
+    description: description_of_task,
+    person: assigned_person,
+    date: due_date,
+    priority: priority_of_task,
+  };
+
+  // Retrieve the tasks data from the local storage
+  let tasks = JSON.parse(localStorage.getItem("tasks"));
+
+  // Check if any of the tasks exist in the storage
+  // If such a case is not there then initialize an empty array
+  if (!tasks) {
+    tasks = [];
+  }
+
+  tasks.push(task);
+
+  // Convert array into JSON string
+  // Reference: https://www.w3schools.com/js/js_json_stringify.asp	
+  const updatedTasksJSON = JSON.stringify(tasks);
+
+  // Update the local storage
+  localStorage.setItem("tasks", updatedTasksJSON);
+
+  displayTasks();
+}
+
