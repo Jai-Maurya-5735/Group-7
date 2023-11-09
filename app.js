@@ -1,3 +1,7 @@
+// When the DOM content is loaded, it will call the displayTasks function
+document.addEventListener("DOMContentLoaded", () => {
+  displayTasks();
+});
 
 function displayTasks() {
   let tasks;
