@@ -213,3 +213,26 @@ function filterTasks(tasks, searchText) {
     );
   });
 }
+
+function updateTaskList(filteredTasks) {
+  // Get the task-list element 
+  const user_data = document.getElementById("task-list");
+
+  // Clear the existing content 
+  user_data.innerHTML = "";
+
+  // Iterate through filtered tasks and create task cards in the DOM
+  filteredTasks.forEach((task) => {
+    const task_block = document.createElement("div");
+    task_block.classList.add("task-card");
+    task_block.innerHTML = `
+            <h3>${task.name}</h3>
+            <p><strong>Description:</strong> ${task.description}</p>
+            <p><strong>Assigned Person:</strong> ${task.person}</p>
+            <p><strong>Due Date:</strong> ${task.date}</p>
+            <p><strong>Priority:</strong> ${task.priority}</p>
+        `;
+    user_data.appendChild(task_block);
+  });
+}
+
