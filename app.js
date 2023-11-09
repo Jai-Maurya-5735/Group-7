@@ -31,9 +31,6 @@ function displayTasks() {
     h3.textContent = task.name;
     taskOP.appendChild(h3);
 
-    return taskOP;
-  });
-
   // Creates a new paragraph element in the DOM for display
   // Set the inner HTML of the each description element to include the text
 
@@ -66,7 +63,7 @@ function displayTasks() {
   taskOP.appendChild(deleteButton);
 
   task_of_user.appendChild(taskOP);
-}
+});}
 
 function addTask() {
   // Retrieve the task details from the input fields for the task manager
