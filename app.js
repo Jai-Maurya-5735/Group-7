@@ -165,24 +165,3 @@ function searchTasks() {
 }
 
 
-function searchTasks() {
-  // Get the search text and convert it into lowercase
-  const searchText = document.getElementById("search").value.toLowerCase();
-
-  // Retrieve data from the local storage of the system
-  const stored_data = localStorage.getItem("tasks");
-
-  // Check if data exist in local storage of system
-  if (stored_data) {
-    const tasks = JSON.parse(stored_data);
-
-    // Filter the data based on the search text
-	  // Reference: https://javascript.plainenglish.io/4-practical-use-cases-of-using-filter-in-javascript-db46e2ec83b2
-    const segregate_data = filterTasks(tasks, searchText);
-
-    // Update the displayed tasks 
-    updateTaskList(segregate_data);
-  } else {
-    console.error("No tasks found in your list");
-  }
-}
