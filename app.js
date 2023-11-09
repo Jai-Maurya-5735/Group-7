@@ -23,7 +23,7 @@ function displayTasks() {
   // Create an array of task card elements using map()
   // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
   // Also used chatgpt for the taskCards
-  const taskCards = tasks.map((task) => {
+    tasks.forEach((task, index) => {
     const taskOP = document.createElement("div");
     taskOP.classList.add("task-card");
 
@@ -32,12 +32,6 @@ function displayTasks() {
     taskOP.appendChild(h3);
 
     return taskOP;
-  });
-
-  // Append the task card elements to the task list
-  // Reference: https: developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
-  taskCards.forEach((taskOP) => {
-    task_of_user.appendChild(taskOP);
   });
 
   // Creates a new paragraph element in the DOM for display
@@ -73,8 +67,6 @@ function displayTasks() {
 
   task_of_user.appendChild(taskOP);
 }
-
-
 
 function addTask() {
   // Retrieve the task details from the input fields for the task manager
