@@ -197,3 +197,19 @@ function deleteTask(index) {
     console.error("No tasks found for you to action");
   }
 }
+
+
+function filterTasks(tasks, searchText) {
+  // Used Array.prototype.filter() to filter based on criteria
+  // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+  // This will check the task's name, description, assigned person, due date, or priority are included in the search text which will be searched by user
+  return tasks.filter((task) => {
+    return (
+      task.name.toLowerCase().includes(searchText) ||
+      task.description.toLowerCase().includes(searchText) ||
+      task.person.toLowerCase().includes(searchText) ||
+      task.date.includes(searchText) ||
+      task.priority.toLowerCase().includes(searchText)
+    );
+  });
+}
