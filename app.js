@@ -35,8 +35,8 @@ function displayTasks() {
   });
 
   // Append the task card elements to the task list
-  Reference: //developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
-  https: taskCards.forEach((taskOP) => {
+  // Reference: https: developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+  taskCards.forEach((taskOP) => {
     task_of_user.appendChild(taskOP);
   });
 
