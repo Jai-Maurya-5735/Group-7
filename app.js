@@ -141,3 +141,36 @@ function editTask(index) {
 
   displayTasks();
 }
+
+
+function deleteTask(index) {
+  // Retrieve the data of the tasks from local storage
+  const tasks_present = localStorage.getItem("tasks");
+
+ 
+  if (tasks_present) {
+  
+    const tasks = JSON.parse(tasks_present);
+
+  
+    if (index >= 0 && index < tasks.length) {
+      // Remove the tasks from the tasks array
+	  // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+      tasks.splice(index, 1);
+
+      // Convert the updated tasks after user action into the JSON string
+	  // Reference: https://www.w3schools.com/js/js_json_stringify.asp	
+      const updatedTasksJSON = JSON.stringify(tasks);
+
+    
+      localStorage.setItem("tasks", updatedTasksJSON);
+
+      // Refresh the displayed tasks
+      displayTasks();
+    } else {
+      console.error("Invalid index");
+    }
+  } else {
+    console.error("No tasks found for you to action");
+  }
+}
